@@ -19,7 +19,11 @@ html$view()
 
 rows <- html |> html_elements(".TopColleges2023_tableRow__BYOSU")
 
-rows <- sess |>  html_elements(".TopColleges2023_tableRow__BYOSU")
+# Two alternative techniques that are less reliant on that suspicious
+# random suffix
+html |> html_elements('[role="row"]')
+html |> html_elements('[class^="TopColleges2023_tableRow"]')
+
 rows |> html_element(".TopColleges2023_organizationName__J1lEV") %>% html_text()
 rows |> html_element(".grant-aid") %>% html_text() |> readr::parse_number()
 
