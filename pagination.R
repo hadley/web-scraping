@@ -42,5 +42,19 @@ parse_page <- function(resp) {
 # Then we feed the "next page" function to req_perform_iterative()
 # And the "get the data" function to resps_data()
 
-pages <- req_perform_iterative(request(url), next_url, max_reqs = 10)
+pages <- req_perform_iterative(request(url), next_url, max_reqs = 50)
 pages |> resps_data(parse_page)
+
+# URL pattern -------------------------------------------------------------
+# Life is much easier if we notice that the pages have a specific url pattern
+# Then we can pregenerate the urls and download them all in parallel
+
+i <- 1:100
+urls <- str_glue("http://books.toscrape.com/catalogue/page-{i}.html")
+requests <- map(url, request)
+pages <- req_perform_parallel(requests, error = "continue")
+pages |> resps_successes() |>  resps_data(parse_page)
+
+# Here we over estimated the number of pages then used error = "continue" to
+# skip any pages that errored. You could also scrape the total number of
+# pages off of the first page and use that for more accurate request generation
