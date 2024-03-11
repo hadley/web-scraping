@@ -5,3 +5,14 @@ In this tutorial, you'll learn the basics of web scraping with R, using the rves
 We'll also touch on scraping multiple pages, using a combination of httr2 to downloading many pages at once, then purrr to parse them and extract the values you care about.
 
 [Slides](rvest.pdf)
+
+## Requirements
+
+To run the code at home, install the following pakages:
+
+```R
+# install.packages("pak")
+pak::pak(c("tidyverse", "chromote"))
+```
+
+To run the live webscraping code you'll also need a copy of chrome installed on your computer.
