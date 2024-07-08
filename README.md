@@ -8,7 +8,7 @@ Bonus content includes scraping multiple pages (with rvest and httr2), scraping 
 
 ## Requirements
 
-To run the code at home, install the following pakages:
+To run the code at home, install the following packages:
 
 ```R
 # install.packages("pak")
