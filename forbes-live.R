@@ -3,8 +3,7 @@ library(rvest)
 # Static site -------------------------------------------------------------
 
 html <- read_html("https://www.forbes.com/top-colleges/")
-html |> html_elements(".TopColleges2023_tableRow__BYOSU")
-html |> html_elements(".TopColleges2023_table__Ffgau")
+html |> html_elements(".TopColleges2023_tableRow__3IGmk")
 
 # WHERE IS THE DATA???
 
@@ -17,14 +16,15 @@ html <- read_html_live("https://www.forbes.com/top-colleges/")
 # a human using the site (i.e. if you need to click buttons or type text)
 html$view()
 
-rows <- html |> html_elements(".TopColleges2023_tableRow__BYOSU")
+rows <- html |> html_elements(".TopColleges2023_tableRow__3IGmk")
+rows
 
 # Two alternative techniques that are less reliant on that suspicious
 # random suffix
 html |> html_elements('[role="row"]')
 html |> html_elements('[class^="TopColleges2023_tableRow"]')
 
-rows |> html_element(".TopColleges2023_organizationName__J1lEV") %>% html_text()
+rows |> html_element(".TopColleges2023_organizationName__ZAzIv") %>% html_text()
 rows |> html_element(".grant-aid") %>% html_text() |> readr::parse_number()
 
 

@@ -32,3 +32,4 @@ starwars |> mutate(
   episode = parse_integer(episode),
   released = parse_date(str_remove(released, "Released: "))
 )
+

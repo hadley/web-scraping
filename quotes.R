@@ -28,7 +28,7 @@ row |>
   html_element(".tags") |>
   lapply(\(tag) tag |> html_elements(".tag") |> html_text2())
 
-# or
+# which is the same as
 row |>
   html_element(".tags") |>
   lapply(function(tag) {
